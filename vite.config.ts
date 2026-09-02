@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [
     react(),
     {
-      name: 'learning-content-aggregate',
+      name: 'academy47-learning-content',
       transform(code, id) {
         if (id.endsWith('/src/main.tsx')) {
           return code
@@ -16,6 +16,9 @@ export default defineConfig({
             .replace('done<8','done<plan.length')
             .replaceAll('8 крупных тем на каждый предмет','6–8 крупных тем в зависимости от предмета')
             .replaceAll('8 тем','6–8 тем')
+            .replace('<span className="brand-mark">K</span>', '<span className="brand-mark">47</span>')
+            .replace('<strong>KATYA Study</strong>', '<strong>ACADEMY 47</strong>')
+            .replace('<small>личный университет</small>', '<small>твоя учебная система</small>')
         }
         if (id.endsWith('/src/studySchedule.ts')) {
           return code.replace("from './semesterPlan'", "from './coursePlans'")

@@ -5,10 +5,15 @@ export default defineConfig({
   plugins: [
     react(),
     {
-      name: 'rich-lessons-aggregate',
+      name: 'learning-content-aggregate',
       transform(code, id) {
         if (id.endsWith('/src/main.tsx')) {
-          return code.replace("from './richLessons'", "from './richLessonsAggregate'")
+          return code
+            .replace("from './richLessons'", "from './richLessonsAggregate'")
+            .replace("from './semesterPlan'", "from './coursePlans'")
+        }
+        if (id.endsWith('/src/studySchedule.ts')) {
+          return code.replace("from './semesterPlan'", "from './coursePlans'")
         }
         return null
       },

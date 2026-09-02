@@ -63,7 +63,8 @@ raw.forEach(day=>day.subjectIds.forEach((subjectId,idx)=>{
   const plan=semesterPlan(subject)
   const occurrence=appearances[subjectId]||0
   const total=totalBySubject[subjectId]||1
-  const topicIndex=Math.min(7,Math.floor(occurrence*8/total))
+  const topicCount=Math.max(1,plan.length)
+  const topicIndex=Math.min(topicCount-1,Math.floor(occurrence*topicCount/total))
   const topic=plan[topicIndex]
   appearances[subjectId]=occurrence+1
   const tk=`${subjectId}:${topicIndex}`
@@ -73,10 +74,10 @@ raw.forEach(day=>day.subjectIds.forEach((subjectId,idx)=>{
 
 const topicCounters:Record<string,number>={}
 function stageFor(part:number,total:number){
-  const ratio=part/total
+  const ratio=part/Math.max(1,total)
   if(part===1)return 'Вводная лекция и карта темы'
   if(ratio<=.3)return 'Теория и ключевые понятия'
-  if(ratio<=.5)return 'Формулы, связи и разбор примеров'
+  if(ratio<=.5)return 'Связи, схемы и разбор примеров'
   if(ratio<=.7)return 'Практика базового и среднего уровня'
   if(ratio<=.88)return 'Углубление и самостоятельные задачи'
   return 'Повторение, тест и мини-зачёт'

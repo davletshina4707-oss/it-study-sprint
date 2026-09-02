@@ -28,16 +28,16 @@ const weekly: Record<number,string[]> = {
   1:['math','programming','english','russian','attention'],
   2:['probability','informatics','history','os','logic'],
   3:['math','ai','english','law','military'],
-  4:['programming','informatics','russian','state','pe'],
+  4:['programming','informatics','russian','statehood','pe'],
   5:['math','probability','os','ai','attention'],
-  6:['programming','english','history','safety','military'],
+  6:['programming','english','history','life-safety','military'],
   0:['informatics','probability','law','logic','ai'],
 }
 
 const duration:Record<string,number>={
   math:60,programming:60,english:55,russian:50,attention:40,
   probability:60,informatics:55,history:50,os:60,logic:45,
-  ai:60,law:50,military:50,state:45,pe:45,safety:45,
+  ai:60,law:50,military:50,statehood:45,pe:45,'life-safety':45,
 }
 
 const weekdayNames=['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота']
